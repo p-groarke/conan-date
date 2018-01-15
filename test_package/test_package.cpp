@@ -1,6 +1,10 @@
-// #include <cpprest/json.h>
+#include <iostream>
+#include <date/date.h>
+#include <date/tz.h>
 
 int main()
 {
-    // const auto parsed_value = web::json::value::parse(U("-22"));
+    auto& db = date::get_tzdb();
+    std::cout << date::weekday{date::jul/4/2001} << '\n';
+    return EXIT_SUCCESS;
 }
