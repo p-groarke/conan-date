@@ -7,7 +7,7 @@ import os
 
 class LibnameConan(ConanFile):
     name = "date"
-    version = "2.4"
+    version = "master"
     url = "https://github.com/bincrafters/conan-date"
     description = "A date and time library based on the C++11/14/17 <chrono> header "
 
@@ -38,14 +38,13 @@ class LibnameConan(ConanFile):
 
     def source(self):
         source_url = "https://github.com/HowardHinnant/date"
-        tools.get("{0}/archive/v{1}.tar.gz".format(source_url, self.version))
+        tools.get("{0}/archive/{1}.tar.gz".format(source_url, self.version))
         extracted_dir = self.name + "-" + self.version
 
         #Rename to "source_subfolder" is a convention to simplify later steps
         os.rename(extracted_dir, self.source_subfolder)
 
         # Helper method for common CMake configurations
-
         self.wrap_cmake()
 
     def build(self):
